@@ -1,0 +1,28 @@
+@import "styles";
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30px;
+  width: 200px;
+  margin: 20px auto;
+  & label {
+    color: $labelColor;
+    font-size: 14px;
+    padding: 3px;
+  }
+  &__wrapperInputAndIcon {
+    position: relative;
+
+    &--input {
+      font-size: 20px;
+    }
+    & img {
+      position: absolute;
+      cursor: pointer;
+      top: 8px;
+      right: 0px;
+    }
+  }
+}

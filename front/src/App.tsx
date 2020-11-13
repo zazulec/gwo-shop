@@ -1,12 +1,23 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import { LoginPage } from './pages/LoginPage';
 
-function App() {
+import { connect } from 'react-redux';
+
+export const App = () => {
   return (
-    <div >
-      aplikacja
+    <div className="appWrapper">
+      <LoginPage />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = () => {
+  return {}
+}
+
+const mapDispatchToProps = () => {
+  return {}
+}
+
+connect(mapStateToProps, mapDispatchToProps)(App);

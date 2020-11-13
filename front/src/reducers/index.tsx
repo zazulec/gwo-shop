@@ -1,8 +1,11 @@
 import shopReducer from './shopReducer';
 import { combineReducers } from "redux";
+import authReducer from './shopReducer';
 
 const appReducer = combineReducers({
+    auth: authReducer,
     shop: shopReducer,
+
 });
 
 const rootReducer = (state: any, action: any) => {
