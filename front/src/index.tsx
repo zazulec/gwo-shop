@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
-import { App } from './App';
-import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
+import App from './App';
 import { store } from './helpers/store/store';
+import './index.scss';
+import reportWebVitals from './reportWebVitals';
 
 
 ReactDOM.render(

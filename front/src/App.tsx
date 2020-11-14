@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
-import './App.scss';
-import { Route, Router } from 'react-router-dom';
-import { history } from './helpers/history/history';
-import { PrivateRoute } from './component/routing/PrivateRoute';
-import { LoginPage } from './pages/LoginPage';
-import { MainPage } from './pages/MainPage';
-
 import { connect } from 'react-redux';
+import { Route, Router } from 'react-router-dom';
+import './App.scss';
+import { PrivateRoute } from './component/routing/PrivateRoute';
+import { history } from './helpers/history/history';
+import LoginPage from './pages/LoginPage';
+import { MainPage } from './pages/MainPage';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 interface AppProps {
   user?: any,
@@ -15,11 +17,26 @@ interface AppState {
   auth: any,
 }
 
-export const App: FC<AppProps> = (props) => {
+const App: FC<AppProps> = (props) => {
   return (
     <div className="appWrapper">
       <Router history={history}>
-        <Route path="/" exact component={LoginPage} />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+        />
+        <Route
+          path="/"
+          exact
+          component={LoginPage}
+        />
         <PrivateRoute
           user={props.user}
           path="/mainPage"
@@ -42,4 +59,4 @@ const mapDispatchToProps = () => {
   return {}
 }
 
-connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

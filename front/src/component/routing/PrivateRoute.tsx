@@ -1,13 +1,10 @@
-import React, { FC, ComponentType, ComponentState } from "react";
+import React, { ComponentState, FC } from "react";
 import { connect } from "react-redux";
-import { Route, Redirect } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 
 interface RouteState {
   auth: {
-    user?: any;
-    // path: string;
-    // exact: true;
-    // component: () => Element;
+    user?: any
   },
 }
 interface PrivateRouteProps {
@@ -19,7 +16,6 @@ interface PrivateRouteProps {
 }
 
 export const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, user, ...rest }) => {
-
   return (
     <Route
       {...rest}
