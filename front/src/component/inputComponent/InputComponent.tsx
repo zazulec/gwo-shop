@@ -6,9 +6,10 @@ interface InputComponentProps {
     type: string,
     labelText: string,
     value: string,
+    readOnly?: boolean,
 }
 
-export const InputComponent: FC<InputComponentProps> = ({ type, labelText, value }) => {
+export const InputComponent: FC<InputComponentProps> = ({ type, labelText, value, readOnly }) => {
     const [showPassword, setShowPassword] = useState(false);
 
 
@@ -21,6 +22,7 @@ export const InputComponent: FC<InputComponentProps> = ({ type, labelText, value
             <div className="inputWrapper__wrapperInputAndIcon">
                 <input
                     className="inputWrapper__wrapperInputAndIcon--input"
+                    readOnly={readOnly}
                     type={
                         type === "password"
                             ? showPassword

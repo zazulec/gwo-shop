@@ -1,19 +1,41 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './App.scss';
+import { Route, Router } from 'react-router-dom';
+import { history } from './helpers/history/history';
+import { PrivateRoute } from './component/routing/PrivateRoute';
 import { LoginPage } from './pages/LoginPage';
+import { MainPage } from './pages/MainPage';
 
 import { connect } from 'react-redux';
 
-export const App = () => {
+interface AppProps {
+  user?: any,
+}
+interface AppState {
+  auth: any,
+}
+
+export const App: FC<AppProps> = (props) => {
   return (
     <div className="appWrapper">
-      <LoginPage />
+      <Router history={history}>
+        <Route path="/" exact component={LoginPage} />
+        <PrivateRoute
+          user={props.user}
+          path="/mainPage"
+          exact
+          component={MainPage}
+        />
+      </Router>
+
     </div>
   );
 }
 
-const mapStateToProps = () => {
-  return {}
+const mapStateToProps = (state: AppState) => {
+  return {
+    user: state.auth.user
+  }
 }
 
 const mapDispatchToProps = () => {
