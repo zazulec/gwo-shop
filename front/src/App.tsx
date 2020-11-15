@@ -5,7 +5,7 @@ import './App.scss';
 import { PrivateRoute } from './component/routing/PrivateRoute';
 import { history } from './helpers/history/history';
 import LoginPage from './pages/LoginPage';
-import { MainPage } from './pages/MainPage';
+import MainPage from './pages/MainPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
