@@ -1,25 +1,33 @@
-import React, { useEffect, FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import { myFetch } from '../helpers/myFetch/myFetch';
-import { Dispatch, Action } from 'redux';
+import { Action, Dispatch } from 'redux';
 import { fetchAllBooks } from '../actions/shopActions/shopActions';
+import { myFetch } from '../helpers/myFetch/myFetch';
+import { Pagination } from '@material-ui/lab';
 
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
-
 }
 const MainPage: FC<MainPageProps> = ({ fetchAllBooks }) => {
+
+    const [page, setPage] = useState(1);
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
     useEffect(() => {
-        myFetch(`/api/book?page=${1}`, {
+        myFetch(`/api/book?page=${page}`, {
             method: "get"
         }).then(data => fetchAllBooks(data))
 
-    }, [fetchAllBooks])
-
+    }, [fetchAllBooks, page])
     return (
         <div className="mainPageWrapper">
             MainPage
+            <Pagination
+                count={2}
+                page={page}
+                onChange={handleChange}
+            />
         </div>
     )
 }
