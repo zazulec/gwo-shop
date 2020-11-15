@@ -7,6 +7,7 @@ import { CustomButton } from '../component/customButton/CustomButton';
 import { InputComponent } from '../component/inputComponent/InputComponent';
 import '../scss/pages/loginPage.scss';
 import { toast } from "react-toastify";
+import run from '../assets/run.svg';
 
 interface LoginPageProps {
     signUp: (login: string, password: string) => Action,
@@ -25,6 +26,7 @@ const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
 
     return (
         <div className="loginWrapper">
+            <img className="loginWrapper_runGuy" src={run} alt="runGuy" />
             <h1>Aby przejść do sklepu musisz się zalogować.</h1>
             <InputComponent
                 type="text"
@@ -38,12 +40,13 @@ const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
                 value={password}
                 readOnly={true}
             />
-            <Link to="/mainPage" style={{ textDecoration: 'none' }}>
+            <Link to="/mainPage" className="loginWrapper_buttonLink" style={{ textDecoration: 'none' }}>
                 <CustomButton
                     title="Zaloguj"
                     onClick={() => handleLoginButtonClick()}
                 />
             </Link>
+            <div className="loginWrapper_attribute"> Icons made by <a href="https://www.flaticon.com/authors/google" title="Google"> Google </a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
         </div >
     )
 }

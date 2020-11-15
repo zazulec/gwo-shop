@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import '../../scss/components/inputComponent.scss';
+import '../../scss/components/inputComponent/inputComponent.scss';
 import passwordIcon from '../../assets/passwordIcon.svg';
 
 interface InputComponentProps {
