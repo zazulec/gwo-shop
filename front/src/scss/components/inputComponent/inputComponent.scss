@@ -1,4 +1,4 @@
-@import "styles";
+@import "../../styles";
 
 .inputWrapper {
   display: flex;
@@ -8,9 +8,14 @@
   width: 200px;
   margin: 20px auto;
   & label {
+    display: flex;
     color: $labelColor;
     font-size: 14px;
     padding: 3px;
+    letter-spacing: 1px;
+    @media all and (min-width: $large) {
+      font-size: 1.2rem;
+    }
   }
   &__wrapperInputAndIcon {
     position: relative;

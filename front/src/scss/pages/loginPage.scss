@@ -1,10 +1,42 @@
+@import "../styles";
+
 .loginWrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
   flex-direction: column;
-  background-color: #0d465a;
+  background-color: $appBackgroundColor;
+  min-height: 100vh;
+  &_runGuy {
+    height: 67px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   & h1 {
-    color: blue;
+    color: $mainOrangeColor;
+    margin: 20px auto;
+    letter-spacing: 1px;
+    @media all and (min-width: $large) {
+      font-size: 2.7rem;
+    }
+  }
+  &_buttonLink {
+    text-decoration: none;
+    margin: 10px auto 0 auto;
+  }
+  &_attribute {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 15px;
+    margin: 0 auto;
+    width: 100%;
+    & > * {
+      text-decoration: none;
+      color: $mainOrangeColor;
+    }
   }
 }
