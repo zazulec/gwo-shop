@@ -1,0 +1,4 @@
+@mixin boxShadow($prop1) {
+  -webkit-box-shadow: $prop1;
+  box-shadow: $prop1;
+}

@@ -1,5 +1,7 @@
 const initState = {
-    allBooks: null
+    allBooks: {
+        data: null,
+    }
 };
 const shopReducer = (state = initState, action: any) => {
     let newState = state;

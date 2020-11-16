@@ -3,17 +3,38 @@ import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
 import { fetchAllBooks } from '../actions/shopActions/shopActions';
 import { myFetch } from '../helpers/myFetch/myFetch';
-import { Pagination } from '@material-ui/lab';
+import ItemCard from '../component/itemCard/ItemCard';
+import '../scss/pages/mainPage/mainPage.scss';
+import { StyledPagination } from '../component/pagination/Pagination';
 
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
+    allBooks: {
+        state: {
+            shop: {
+                allBooks: {
+                    data: [],
+                }
+            },
+        },
+        map: any
+    }
 }
-const MainPage: FC<MainPageProps> = ({ fetchAllBooks }) => {
+
+interface MainPageState {
+    shop: {
+        allBooks: {
+            data: any,
+        }
+    }
+}
+const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
 
     const [page, setPage] = useState(1);
-    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
     };
+    console.log(allBooks)
     useEffect(() => {
         myFetch(`/api/book?page=${page}`, {
             method: "get"
@@ -21,19 +42,27 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks }) => {
 
     }, [fetchAllBooks, page])
     return (
-        <div className="mainPageWrapper">
+        <div className="mainPage">
             MainPage
-            <Pagination
-                count={2}
-                page={page}
-                onChange={handleChange}
-            />
+            <div className="mainPage_itemCardWrapper">
+                {allBooks && allBooks.map((book: [], index: number) => {
+                    return (<div key={index}><ItemCard book={book} /></div>)
+                })}
+            </div>
+            <div className="mainPage_pagination">
+                <StyledPagination
+                    handlePaginationChange={handlePaginationChange}
+                    page={page}
+                />
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = () => {
-    return {}
+const mapStateToProps = (state: MainPageState) => {
+    return {
+        allBooks: state.shop.allBooks.data,
+    }
 }
 
 
