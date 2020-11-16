@@ -1,0 +1,10 @@
+.itemCard_leftContent {
+  padding: 40px 0 40px 0;
+  @media all and (min-width: $small) {
+    padding-left: 40px;
+  }
+  & > img {
+    width: 200px;
+    height: 250px;
+  }
+}

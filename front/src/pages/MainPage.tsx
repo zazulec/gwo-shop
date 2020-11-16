@@ -7,6 +7,8 @@ import ItemCard from '../component/itemCard/ItemCard';
 import '../scss/pages/mainPage/mainPage.scss';
 import { StyledPagination } from '../component/pagination/Pagination';
 
+
+
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
     allBooks: {
@@ -17,7 +19,7 @@ interface MainPageProps {
                 }
             },
         },
-        map: any
+        map: (book: any) => JSX.Element
     }
 }
 
@@ -45,7 +47,7 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
         <div className="mainPage">
             MainPage
             <div className="mainPage_itemCardWrapper">
-                {allBooks && allBooks.map((book: [], index: number) => {
+                {allBooks && allBooks.map((book: any, index: number) => {
                     return (<div key={index}><ItemCard book={book} /></div>)
                 })}
             </div>
