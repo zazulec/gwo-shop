@@ -1,0 +1,13 @@
+@import "../../styles";
+@import "pagination";
+@import "itemCardWrapper";
+
+.mainPage {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $appBackgroundColor;
+  min-height: 100vh;
+}

@@ -5,7 +5,7 @@ import { Action, Dispatch } from 'redux';
 import signUp from '../actions/authActions/authActions';
 import { CustomButton } from '../component/customButton/CustomButton';
 import { InputComponent } from '../component/inputComponent/InputComponent';
-import '../scss/pages/loginPage.scss';
+import '../scss/pages/loginPage/loginPage.scss';
 import { toast } from "react-toastify";
 import run from '../assets/run.svg';
 
