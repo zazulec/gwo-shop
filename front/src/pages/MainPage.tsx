@@ -7,6 +7,8 @@ import ItemCard from '../component/itemCard/ItemCard';
 import '../scss/pages/mainPage/mainPage.scss';
 import { StyledPagination } from '../component/pagination/Pagination';
 
+
+
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
     allBooks: {
@@ -17,7 +19,7 @@ interface MainPageProps {
                 }
             },
         },
-        map: any
+        map: (book: any) => JSX.Element
     }
 }
 
@@ -31,24 +33,26 @@ interface MainPageState {
 const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
 
     const [page, setPage] = useState(1);
+
     const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
     };
-    console.log(allBooks)
+
+
     useEffect(() => {
         myFetch(`/api/book?page=${page}`, {
             method: "get"
         }).then(data => fetchAllBooks(data))
 
+
     }, [fetchAllBooks, page])
     return (
         <div className="mainPage">
-            MainPage
-            <div className="mainPage_itemCardWrapper">
-                {allBooks && allBooks.map((book: [], index: number) => {
-                    return (<div key={index}><ItemCard book={book} /></div>)
-                })}
-            </div>
+            <h1>Księgarnia online</h1>
+            <h3>Wybierz interesujące cie opcje, dodaj do koszyka i sfinalizuj zakupy.</h3>
+            {allBooks && allBooks.map((book: any, index: number) => {
+                return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
+            })}
             <div className="mainPage_pagination">
                 <StyledPagination
                     handlePaginationChange={handlePaginationChange}

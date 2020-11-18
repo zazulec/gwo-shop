@@ -1,16 +1,47 @@
 @import "../../styles.scss";
 @import "../../mixins.scss";
+@import "leftContent";
+@import "centerContent";
+@import "rightContent";
 
 .itemCard {
   display: flex;
-  justify-content: center;
+  position: relative;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  width: 400px;
-  height: 200px;
+  width: 100%;
   background-color: $itemCardColor;
   border-radius: 30px;
   @include boxShadow(0px 0px 17px 0px $boxShadowColor);
   border: 4px solid $mainOrangeColor;
-  margin: 10px;
+  @media all and (min-width: $small) {
+    flex-direction: row;
+  }
+  &_arrow {
+    width: 0px;
+    height: 0px;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid $mainOrangeColor;
+    position: absolute;
+    top: 0;
+    left: 330px;
+    @media all and (min-width: $small) {
+      flex-direction: row;
+      left: 120px;
+    }
+    @media all and (min-width: $xSmall) and(max-width: $small) {
+      flex-direction: row;
+      left: 320px;
+    }
+    @media all and (min-width: $lowestWidth) and(max-width: $xSmall) {
+      left: 120px;
+    }
+    &_verticalLine {
+      border-left: 1px solid #f49100;
+      height: 280px;
+      margin: 0;
+    }
+  }
 }

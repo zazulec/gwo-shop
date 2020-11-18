@@ -1,0 +1,8 @@
+.itemCard_rightContent {
+  @media all and(min-width:$lowestWidth) and(max-width:$small) {
+    padding-bottom: 60px;
+  }
+  @media all and(min-width:$small) {
+    padding-right: 40px;
+  }
+}
