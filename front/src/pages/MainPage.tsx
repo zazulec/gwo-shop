@@ -2,12 +2,11 @@ import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
 import { fetchAllBooks } from '../actions/shopActions/shopActions';
-import { myFetch } from '../helpers/myFetch/myFetch';
 import ItemCard from '../component/itemCard/ItemCard';
-import '../scss/pages/mainPage/mainPage.scss';
 import { StyledPagination } from '../component/pagination/Pagination';
-
-
+import { myFetch } from '../helpers/myFetch/myFetch';
+import '../scss/pages/mainPage/mainPage.scss';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
@@ -50,6 +49,8 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
         <div className="mainPage">
             <h1>Księgarnia online</h1>
             <h3>Wybierz interesujące cie opcje, dodaj do koszyka i sfinalizuj zakupy.</h3>
+            <div className="mainPage_icon"><AddShoppingCartIcon fontSize="large" /></div>
+
             {allBooks && allBooks.map((book: any, index: number) => {
                 return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
             })}
