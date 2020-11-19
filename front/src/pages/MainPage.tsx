@@ -62,10 +62,9 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
                 />
             </div>
 
-            {
-                allBooks && allBooks.map((book: any, index: number) => {
-                    return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
-                })
+            {allBooks && allBooks.map((book: any, index: number) => {
+                return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
+            })
             }
             <div className="mainPage_pagination">
                 <StyledPagination

@@ -2,7 +2,7 @@ const initState = {
     allBooks: {
         data: null,
     },
-    shoppingCart: {}
+    shoppingCart: []
 };
 const shopReducer = (state = initState, action: any) => {
     let newState = state;

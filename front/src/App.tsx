@@ -8,6 +8,7 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ShoppingCart } from './pages/ShoppingCart';
 
 
 interface AppProps {
@@ -42,6 +43,12 @@ const App: FC<AppProps> = (props) => {
           path="/mainPage"
           exact
           component={MainPage}
+        />
+        <PrivateRoute
+          user={props.user}
+          path="/shoppingCart"
+          exact
+          component={ShoppingCart}
         />
       </Router>
 
