@@ -49,18 +49,31 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
         <div className="mainPage">
             <h1>Księgarnia online</h1>
             <h3>Wybierz interesujące cie opcje, dodaj do koszyka i sfinalizuj zakupy.</h3>
-            <div className="mainPage_icon"><AddShoppingCartIcon fontSize="large" /></div>
-
-            {allBooks && allBooks.map((book: any, index: number) => {
-                return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
-            })}
+            <div className="mainPage_icon">
+                <div className="mainPage_icon--cart">
+                    <AddShoppingCartIcon fontSize="large" />
+                </div>
+                <div className="mainPage_icon--cartCounter">{`(${1})`}</div>
+            </div>
             <div className="mainPage_pagination">
                 <StyledPagination
                     handlePaginationChange={handlePaginationChange}
                     page={page}
                 />
             </div>
-        </div>
+
+            {
+                allBooks && allBooks.map((book: any, index: number) => {
+                    return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
+                })
+            }
+            <div className="mainPage_pagination">
+                <StyledPagination
+                    handlePaginationChange={handlePaginationChange}
+                    page={page}
+                />
+            </div>
+        </div >
     )
 }
 
