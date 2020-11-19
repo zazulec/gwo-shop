@@ -1,12 +1,13 @@
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
-import { fetchAllBooks } from '../actions/shopActions/shopActions';
+import { fetchAllBooks, addBookToCart } from '../actions/shopActions/shopActions';
 import ItemCard from '../component/itemCard/ItemCard';
 import { StyledPagination } from '../component/pagination/Pagination';
 import { myFetch } from '../helpers/myFetch/myFetch';
 import '../scss/pages/mainPage/mainPage.scss';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
@@ -49,12 +50,14 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
         <div className="mainPage">
             <h1>Księgarnia online</h1>
             <h3>Wybierz interesujące cie opcje, dodaj do koszyka i sfinalizuj zakupy.</h3>
-            <div className="mainPage_icon">
+            <Link className="mainPage_icon"
+                to={"/shoppingCart"}
+            >
                 <div className="mainPage_icon--cart">
                     <AddShoppingCartIcon fontSize="large" />
                 </div>
                 <div className="mainPage_icon--cartCounter">{`(${1})`}</div>
-            </div>
+            </Link>
             <div className="mainPage_pagination">
                 <StyledPagination
                     handlePaginationChange={handlePaginationChange}
@@ -63,7 +66,11 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks }) => {
             </div>
 
             {allBooks && allBooks.map((book: any, index: number) => {
-                return (<div className="mainPage_itemCardWrapper" key={index}><ItemCard book={book} /></div>)
+                return (
+                    <div
+                        className="mainPage_itemCardWrapper"
+                        key={index}>
+                        <ItemCard book={book} addBookToCart={addBookToCart} /></div>)
             })
             }
             <div className="mainPage_pagination">
@@ -85,7 +92,8 @@ const mapStateToProps = (state: MainPageState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        fetchAllBooks: (data: any) => dispatch(fetchAllBooks(data))
+        fetchAllBooks: (data: any) => dispatch(fetchAllBooks(data)),
+        addBookToCart: (data: any) => dispatch(addBookToCart(data))
     }
 }
 

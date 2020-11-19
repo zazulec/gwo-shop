@@ -3,7 +3,7 @@ import '../../scss/components/customButton/customButton.scss';
 
 interface CustomButtonProps {
     title: string,
-    onClick: () => any,
+    onClick: (data: any) => any,
 }
 
 export const CustomButton: FC<CustomButtonProps> = ({ title, onClick }) => {

@@ -2,7 +2,7 @@ const initState = {
     allBooks: {
         data: null,
     },
-    shoppingCart: []
+    shoppingCart: [] as any,
 };
 const shopReducer = (state = initState, action: any) => {
     let newState = state;
@@ -13,6 +13,15 @@ const shopReducer = (state = initState, action: any) => {
                 allBooks: action.allBooks,
             };
             break;
+        case "ADD_BOOK_TO_CART":
+            let data = action.cart
+            newState = {
+                ...state,
+                shoppingCart: [...state.shoppingCart, data]
+            };
+            break;
+        default:
+            return state
     }
     return newState;
 };

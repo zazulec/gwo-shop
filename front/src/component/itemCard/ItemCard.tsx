@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import '../../scss/components/itemCard/itemCard.scss';
 import { CustomButton } from '../customButton/CustomButton';
+import { Action } from 'redux';
+import { useDispatch } from 'react-redux';
 
 
 interface ItemCardProps {
@@ -11,11 +13,14 @@ interface ItemCardProps {
         id: number,
         pages: number,
         price: number,
-        currency: string
+        currency: string,
     },
+    addBookToCart: (data: any) => any,
 }
-const ItemCard: FC<ItemCardProps> = ({ book }) => {
+const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart }) => {
+    const dispatch = useDispatch()
     const { title, cover_url, author, pages } = book;
+    console.log(addBookToCart)
     return (
         <div className="itemCard">
             <div className="itemCard_arrow"></div>
@@ -31,7 +36,7 @@ const ItemCard: FC<ItemCardProps> = ({ book }) => {
             <div className="itemCard_rightContent">
                 <CustomButton
                     title="Dodaj do koszyka"
-                    onClick={() => console.log('click')}
+                    onClick={() => dispatch(addBookToCart(book))}
 
                 />
             </div>

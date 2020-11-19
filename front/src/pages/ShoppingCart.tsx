@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { useDispatch, useSelector, connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 interface ShoppingCartState {
     shop: { shoppingCart: [] }
