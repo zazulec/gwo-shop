@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import '../../scss/components/itemCard/itemCard.scss';
 import { CustomButton } from '../customButton/CustomButton';
 
@@ -11,11 +12,16 @@ interface ItemCardProps {
         id: number,
         pages: number,
         price: number,
-        currency: string
+        currency: string,
     },
+    addBookToCart?: any,
+    shoppingCart?: any,
+    component?: string,
 }
-const ItemCard: FC<ItemCardProps> = ({ book }) => {
+const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, component }) => {
+    const dispatch = useDispatch()
     const { title, cover_url, author, pages } = book;
+
     return (
         <div className="itemCard">
             <div className="itemCard_arrow"></div>
@@ -28,14 +34,21 @@ const ItemCard: FC<ItemCardProps> = ({ book }) => {
                 <p><b>Autor:</b> {author ? author : "Brak danych"}</p>
                 <p><b>Ilość stron:</b> {pages}</p>
             </div>
-            <div className="itemCard_rightContent">
-                <CustomButton
-                    title="Dodaj do koszyka"
-                    onClick={() => console.log('click')}
+            {component === "mainPage" ?
+                <div className="itemCard_rightContent">
+                    {shoppingCart.find((e: any) => e.title === title) ?
+                        <CustomButton
+                            buttonStyle={{ cursor: "auto", backgroundColor: "#c96d06" }}
+                            title="Dodano do koszyka"
+                        />
+                        :
+                        <CustomButton
+                            title="Dodaj do koszyka"
+                            onClick={() => dispatch(addBookToCart(book))}
 
-                />
-            </div>
-
+                        />}
+                </div>
+                : null}
         </div>
     )
 }

@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ShoppingCartPage } from './pages/ShoppingCartPage';
+import ScrollToTop from './helpers/scrollToTop/ScrollToTop';
 
 
 interface AppProps {
@@ -21,30 +23,37 @@ const App: FC<AppProps> = (props) => {
   return (
     <div className="appWrapper">
       <Router history={history}>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover
-        />
-        <Route
-          path="/"
-          exact
-          component={LoginPage}
-        />
-        <PrivateRoute
-          user={props.user}
-          path="/mainPage"
-          exact
-          component={MainPage}
-        />
+        <ScrollToTop>
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss={false}
+            draggable
+            pauseOnHover
+          />
+          <Route
+            path="/"
+            exact
+            component={LoginPage}
+          />
+          <PrivateRoute
+            user={props.user}
+            path="/mainPage"
+            exact
+            component={MainPage}
+          />
+          <PrivateRoute
+            user={props.user}
+            path="/shoppingCart"
+            exact
+            component={ShoppingCartPage}
+          />
+        </ScrollToTop>
       </Router>
-
     </div>
   );
 }
@@ -55,8 +64,4 @@ const mapStateToProps = (state: AppState) => {
   }
 }
 
-const mapDispatchToProps = () => {
-  return {}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
