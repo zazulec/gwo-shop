@@ -7,7 +7,6 @@ export const fetchAllBooks = (data: any): FetchAllBooksAction => {
     }
 }
 export const addBookToCart = (data: any): AddBookToCart => {
-    console.log('data w akcji', data)
     return {
         type: ADD_BOOK_TO_CART,
         cart: data,

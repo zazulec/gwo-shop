@@ -1,8 +1,8 @@
 @import "../../styles";
-@import "pagination";
-@import "itemCardWrapper";
+@import "itemCard";
+@import "emptyButton";
 
-.mainPage {
+.shoppingCart {
   display: flex;
   position: relative;
   justify-content: center;
@@ -10,6 +10,9 @@
   flex-direction: column;
   background-color: $appBackgroundColor;
   min-height: 100vh;
+  &:last-child {
+    padding-bottom: 100px;
+  }
   h1 {
     color: $mainOrangeColor;
     padding: 0 10px;
