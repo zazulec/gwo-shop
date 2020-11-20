@@ -1,4 +1,6 @@
-.mainPage_icon {
+@import "../../styles";
+
+.shoppingCart {
   display: flex;
   align-items: center;
   position: fixed;
@@ -13,7 +15,7 @@
   &:active {
     text-decoration: none;
   }
-  &--cart {
+  &_cart {
     margin-right: 5px;
     background-color: $mainOrangeColor;
     border-radius: 27px;
@@ -24,7 +26,7 @@
     justify-content: center;
     align-items: center;
   }
-  &--cartCounter {
+  &_cartCounter {
     color: $mainOrangeColor;
   }
 }
