@@ -10,9 +10,12 @@ interface CustomButtonProps {
 
 export const CustomButton: FC<CustomButtonProps> = ({ title, onClick, buttonStyle, style }) => {
     return (
-        <div className={`customButton ${style}`}>
+        <div className={`customButton `}
+            style={style}
+        >
             <button
-                className={`customButton_button ${buttonStyle}`}
+                className={`customButton_button `}
+                style={buttonStyle}
                 onClick={onClick}
             >
                 {title}

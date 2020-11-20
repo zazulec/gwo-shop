@@ -38,7 +38,7 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                 <div className="itemCard_rightContent">
                     {shoppingCart.find((e: any) => e.title === title) ?
                         <CustomButton
-                            buttonStyle={{ cursor: "auto" }}
+                            buttonStyle={{ cursor: "auto", backgroundColor: "#c96d06" }}
                             title="Dodano do koszyka"
                         />
                         :
