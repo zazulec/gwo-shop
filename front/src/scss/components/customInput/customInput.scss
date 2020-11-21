@@ -1,0 +1,31 @@
+@import "../../styles";
+
+.customInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  width: 231px;
+  &_label {
+    display: flex;
+    color: $labelColor;
+    font-size: 14px;
+    padding: 3px;
+    letter-spacing: 1px;
+    @media all and (min-width: $large) {
+      font-size: 1.2rem;
+    }
+  }
+  &_input {
+    font-size: 20px;
+    &:focus {
+      outline: none !important;
+      border-color: $mainOrangeColor;
+      box-shadow: 0 0 10px $mainOrangeColor;
+    }
+  }
+  &_errorLabel {
+    color: $errorColor;
+    font-size: 13px;
+  }
+}
