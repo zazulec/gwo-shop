@@ -2,12 +2,12 @@ import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Action, Dispatch } from 'redux';
-import signUp from '../actions/authActions/authActions';
-import { CustomButton } from '../component/customButton/CustomButton';
-import { InputComponent } from '../component/inputComponent/InputComponent';
-import '../scss/pages/loginPage/loginPage.scss';
+import signUp from '../../actions/authActions/authActions';
+import { CustomButton } from '../../component/customButton/CustomButton';
+import { CustomLoginInput } from '../../component/customLoginInput/CustomLoginInput';
+import '../../scss/pages/loginPage/loginPage.scss';
 import { toast } from "react-toastify";
-import run from '../assets/run.svg';
+import run from '../../assets/run.svg';
 
 interface LoginPageProps {
     signUp: (login: string, password: string) => Action,
@@ -28,13 +28,13 @@ const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
         <div className="loginWrapper">
             <img className="loginWrapper_runGuy" src={run} alt="runGuy" />
             <h1>Aby przejść do sklepu musisz się zalogować.</h1>
-            <InputComponent
+            <CustomLoginInput
                 type="text"
                 labelText="login"
                 value={login}
                 readOnly={true}
             />
-            <InputComponent
+            <CustomLoginInput
                 type="password"
                 labelText="pasword"
                 value={password}

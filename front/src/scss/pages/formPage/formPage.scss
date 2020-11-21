@@ -1,0 +1,11 @@
+@import "../../styles";
+
+.formPage {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $appBackgroundColor;
+  min-height: 100vh;
+}
