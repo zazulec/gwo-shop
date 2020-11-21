@@ -1,4 +1,5 @@
-import { FetchAllBooksAction, AddBookToCart, FETCH_ALL_BOOKS, ADD_BOOK_TO_CART } from "../types/shopActionsTypes";
+import { AddBookToCart, ADD_BOOK_TO_CART, FetchAllBooksAction, FETCH_ALL_BOOKS, SET_ORDER_RESULT, SetOrderResult } from "../types/shopActionsTypes";
+
 
 export const fetchAllBooks = (data: any): FetchAllBooksAction => {
     return {
@@ -12,8 +13,11 @@ export const addBookToCart = (data: any): AddBookToCart => {
         cart: data,
     }
 }
-
-
-
+export const setOrderResult = (data: any): SetOrderResult => {
+    return {
+        type: SET_ORDER_RESULT,
+        result: data,
+    }
+}
 
 

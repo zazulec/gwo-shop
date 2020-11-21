@@ -1,5 +1,6 @@
 export const FETCH_ALL_BOOKS = "FETCH_ALL_BOOKS";
 export const ADD_BOOK_TO_CART = "ADD_BOOK_TO_CART";
+export const SET_ORDER_RESULT = "SET_ORDER_RESULT";
 
 export interface FetchAllBooksAction {
     type: typeof FETCH_ALL_BOOKS,
@@ -13,4 +14,8 @@ export interface AddBookToCart {
     cart: [
         {}
     ]
+}
+export interface SetOrderResult {
+    type: typeof SET_ORDER_RESULT,
+    result: any
 }
