@@ -1,0 +1,12 @@
+@import "../../styles";
+@import "label";
+@import "input";
+@import "errorLabel";
+
+.customInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px auto;
+  width: 231px;
+}

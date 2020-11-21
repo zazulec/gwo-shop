@@ -1,0 +1,21 @@
+@import "../../styles";
+@import "inputs";
+
+.formPage {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: $appBackgroundColor;
+  min-height: 100vh;
+  h1 {
+    color: $mainOrangeColor;
+    padding: 0 10px;
+    text-shadow: #474747 3px 5px 2px;
+  }
+  h3 {
+    color: $mainOrangeColor;
+    text-shadow: #474747 3px 5px 2px;
+  }
+}

@@ -1,0 +1,8 @@
+.customInput_input {
+  font-size: 20px;
+  &:focus {
+    outline: none !important;
+    border-color: $mainOrangeColor;
+    box-shadow: 0 0 10px $mainOrangeColor;
+  }
+}

@@ -14,7 +14,7 @@ const shopReducer = (state = initState, action: any) => {
             };
             break;
         case "ADD_BOOK_TO_CART":
-            let data = action.cart
+            let data = { ...action.cart, quantity: 1 };
             newState = {
                 ...state,
                 shoppingCart: [...state.shoppingCart, data]

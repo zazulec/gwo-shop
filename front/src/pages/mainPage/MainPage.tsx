@@ -1,33 +1,24 @@
 import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Action, Dispatch } from 'redux';
-import { addBookToCart, fetchAllBooks } from '../actions/shopActions/shopActions';
-import ItemCard from '../component/itemCard/ItemCard';
-import { StyledPagination } from '../component/pagination/Pagination';
-import { ShoppingCartButton } from '../component/shoppingCartButton/ShoppingCartButton';
-import { myFetch } from '../helpers/myFetch/myFetch';
-import '../scss/pages/mainPage/mainPage.scss';
+import { addBookToCart, fetchAllBooks } from '../../actions/shopActions/shopActions';
+import ItemCard from '../../component/itemCard/ItemCard';
+import { StyledPagination } from '../../component/pagination/Pagination';
+import { ShoppingCartButton } from '../../component/shoppingCartButton/ShoppingCartButton';
+import { myFetch } from '../../helpers/myFetch/myFetch';
+import '../../scss/pages/mainPage/mainPage.scss';
 
 interface MainPageProps {
     fetchAllBooks: (data: any) => Action;
-    allBooks: {
-        state: {
-            shop: {
-                allBooks: {
-                    data: [],
-                }
-            },
-        },
-        map: (book: any) => JSX.Element
-    },
+    allBooks: any[],
     shoppingCart: Array<{}>,
 }
 
 interface MainPageState {
     shop: {
         allBooks: {
-            data: any,
-        },
+            data: any[]
+        }
         shoppingCart: Array<{}>,
     }
 }

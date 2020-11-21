@@ -4,12 +4,13 @@ import { Route, Router } from 'react-router-dom';
 import './App.scss';
 import { PrivateRoute } from './component/routing/PrivateRoute';
 import { history } from './helpers/history/history';
-import LoginPage from './pages/LoginPage';
-import MainPage from './pages/MainPage';
+import LoginPage from './pages/loginPage/LoginPage';
+import MainPage from './pages/mainPage/MainPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ShoppingCartPage } from './pages/ShoppingCartPage';
+import { ShoppingCartPage } from './pages/shoppingCartPage/ShoppingCartPage';
 import ScrollToTop from './helpers/scrollToTop/ScrollToTop';
+import { FormPage } from './pages/formPage/FormPage';
 
 
 interface AppProps {
@@ -51,6 +52,12 @@ const App: FC<AppProps> = (props) => {
             path="/shoppingCart"
             exact
             component={ShoppingCartPage}
+          />
+          <PrivateRoute
+            user={props.user}
+            path="/order"
+            exact
+            component={FormPage}
           />
         </ScrollToTop>
       </Router>
