@@ -1,4 +1,4 @@
-import { AddBookToCart, ADD_BOOK_TO_CART, FetchAllBooksAction, FETCH_ALL_BOOKS, SET_ORDER_RESULT, SetOrderResult } from "../types/shopActionsTypes";
+import { AddBookToCart, ADD_BOOK_TO_CART, FetchAllBooksAction, FETCH_ALL_BOOKS, RESET_REDUX_WHOLE_SHOP_DATA, ResetWholeReduxShopData } from "../types/shopActionsTypes";
 
 
 export const fetchAllBooks = (data: any): FetchAllBooksAction => {
@@ -13,10 +13,10 @@ export const addBookToCart = (data: any): AddBookToCart => {
         cart: data,
     }
 }
-export const setOrderResult = (data: any): SetOrderResult => {
+
+export const resetWholeReduxShopData = (): ResetWholeReduxShopData => {
     return {
-        type: SET_ORDER_RESULT,
-        result: data,
+        type: RESET_REDUX_WHOLE_SHOP_DATA,
     }
 }
 

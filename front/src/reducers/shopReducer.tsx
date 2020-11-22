@@ -20,6 +20,15 @@ const shopReducer = (state = initState, action: any) => {
                 shoppingCart: [...state.shoppingCart, data]
             };
             break;
+        case "RESET_REDUX_WHOLE_SHOP_DATA":
+            newState = {
+                ...state,
+                allBooks: {
+                    data: null,
+                },
+                shoppingCart: []
+            };
+            break;
         default:
             return state
     }

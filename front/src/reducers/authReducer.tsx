@@ -1,10 +1,9 @@
-import { SignUpAction } from '../actions/types/authActionsTypes';
 
 const initState = {
     user: {},
 };
 
-export const authReducer = (state = initState, action: SignUpAction) => {
+export const authReducer = (state = initState, action: any) => {
     let newState = state;
     switch (action.type) {
         case "SIGN_UP":
@@ -16,6 +15,14 @@ export const authReducer = (state = initState, action: SignUpAction) => {
                 }
             };
             break;
+        case "RESET_REDUX_WHOLE_AUTH_DATA":
+            newState = {
+                ...state,
+                user: {}
+            };
+            break;
+        default:
+            return state
     }
     return newState;
 }
