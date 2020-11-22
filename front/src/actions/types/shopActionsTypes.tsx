@@ -1,6 +1,6 @@
 export const FETCH_ALL_BOOKS = "FETCH_ALL_BOOKS";
 export const ADD_BOOK_TO_CART = "ADD_BOOK_TO_CART";
-export const SET_ORDER_RESULT = "SET_ORDER_RESULT";
+export const RESET_REDUX_WHOLE_SHOP_DATA = "RESET_REDUX_WHOLE_SHOP_DATA";
 
 export interface FetchAllBooksAction {
     type: typeof FETCH_ALL_BOOKS,
@@ -15,7 +15,7 @@ export interface AddBookToCart {
         {}
     ]
 }
-export interface SetOrderResult {
-    type: typeof SET_ORDER_RESULT,
-    result: any
+
+export interface ResetWholeReduxShopData {
+    type: typeof RESET_REDUX_WHOLE_SHOP_DATA,
 }
