@@ -33,7 +33,7 @@ export const ShoppingCartPage: FC = () => {
                             <div
                                 className="shoppingCart_itemCard"
                                 key={index}>
-                                <ItemCard book={book} />
+                                <ItemCard book={book} component="cartPage" />
                             </div>
                         )
                     })}

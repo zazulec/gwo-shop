@@ -1,4 +1,5 @@
 .itemCard_rightContent {
+  padding-right: 5px;
   @media all and(min-width:$lowestWidth) and(max-width:$small) {
     padding-bottom: 60px;
   }
