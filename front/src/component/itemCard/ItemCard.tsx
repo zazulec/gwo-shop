@@ -64,7 +64,7 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                                     :
                                     (<RemoveCircleOutlineIcon onClick={() => dispatch(deleteBookQuantity(id))} className="itemCard_addQuantity--removeButton" />)}
                                 <span>{quantity} szt.</span>
-                                <AddCircleOutlineIcon className="itemCard_addQuantity--addIcon" onClick={() => dispatch(addBookQuantity(id))} />
+                                <AddCircleOutlineIcon className="itemCard_addQuantity--addButton" onClick={() => dispatch(addBookQuantity(id))} />
                                 <span style={{ paddingRight: "10px" }}> Cena: {(price *= quantity / 100).toFixed(2) + " " + currency} </span>
                             </div>
                         </div>
