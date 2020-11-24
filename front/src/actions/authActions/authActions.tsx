@@ -1,4 +1,6 @@
-import { SignUpAction, SIGN_UP, ResetWholeReduxAuthData, RESET_REDUX_WHOLE_AUTH_DATA } from '../types/authActionsTypes';
+import {
+    SignUpAction, SIGN_UP, ResetWholeReduxAuthData, RESET_REDUX_WHOLE_AUTH_DATA,
+} from '../types/authActionsTypes';
 
 
 export default function signUp(login: string, password: string): SignUpAction {
