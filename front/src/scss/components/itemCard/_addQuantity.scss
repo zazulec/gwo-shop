@@ -1,0 +1,24 @@
+.itemCard_addQuantity {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding-bottom: 30px;
+  &--counter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &--borderIcon {
+    padding-right: 10px;
+    color: $warningColor;
+  }
+  &--removeButton {
+    padding-right: 10px;
+    color: $mainOrangeColorOnHover;
+    cursor: pointer;
+  }
+  &--addButton {
+    @extend .itemCard_addQuantity--removeButton;
+    color: $mainOrangeColor;
+  }
+}

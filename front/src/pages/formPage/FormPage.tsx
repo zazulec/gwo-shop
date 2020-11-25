@@ -55,7 +55,7 @@ export const FormPage: FC<FormPageState> = () => {
         if ((nameError === "noError" && surnameError === "noError" && townError === "noError" && zipError === "noError") === true) {
             return (cart.forEach(e => sendOrder(e.id, e.quantity, name, surname, town, zip)))
         }
-    }, [nameError, surnameError, townError, zipError, name, surname, town, zip])
+    }, [nameError, surnameError, townError, zipError, name, surname, town, zip, cart])
     const checkName = () => {
         const nameValidation = /^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/;
         if (nameValidation.test(name) === true && name.length >= 4) {

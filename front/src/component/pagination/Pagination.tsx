@@ -9,6 +9,11 @@ const useStyles = makeStyles((theme) =>
             '& > * + *': {
                 marginTop: theme.spacing(2),
             },
+            '& .Mui-selected': {
+                color: '#f49100',
+                fontWeight: 700
+            },
+
 
         },
 
@@ -27,7 +32,7 @@ export const StyledPagination: FC<StyledPaginationProps> = ({ handlePaginationCh
     return (
         <div className={classes.root}>
             <Pagination
-                count={2} page={page} onChange={handlePaginationChange} />
+                count={2} page={page} onChange={handlePaginationChange} size={'large'} />
         </div>
     );
 }
