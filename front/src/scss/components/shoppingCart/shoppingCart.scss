@@ -4,10 +4,13 @@
   display: flex;
   align-items: center;
   position: fixed;
-  top: 37px;
+  top: 290px;
   right: 1%;
   z-index: 10;
   text-decoration: none;
+  @media all and (min-width: $xSmall) {
+    top: 185px;
+  }
   &:focus,
   &:hover,
   &:visited,

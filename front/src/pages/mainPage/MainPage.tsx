@@ -1,15 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { addBookToCart, fetchAllBooks } from '../../actions/shopActions/shopActions';
+import { addBookToCart, fetchBooks } from '../../actions/shopActions/shopActions';
 import ItemCard from '../../component/itemCard/ItemCard';
 import { StyledPagination } from '../../component/pagination/Pagination';
 import { ShoppingCartButton } from '../../component/shoppingCartButton/ShoppingCartButton';
 import { MainPageProps, MainPageState } from '../../helpers/interfaces/interfaces';
-import { myFetch } from '../../helpers/myFetch/myFetch';
 import '../../scss/pages/mainPage/mainPage.scss';
 
-const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks, shoppingCart }) => {
+const MainPage: FC<MainPageProps> = ({ allBooks, shoppingCart, fetchBooks }) => {
     const [page, setPage] = useState(1);
 
     const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
@@ -17,10 +16,8 @@ const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks, shoppingCart }) 
     };
 
     useEffect(() => {
-        myFetch(`/api/book?page=${page}`, {
-            method: "get"
-        }).then(data => fetchAllBooks(data))
-    }, [fetchAllBooks, page]);
+        fetchBooks(page)
+    }, [fetchBooks, page]);
 
     return (
         <div className="mainPage">
@@ -64,8 +61,8 @@ const mapStateToProps = (state: MainPageState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        fetchAllBooks: (data: any) => dispatch(fetchAllBooks(data)),
-        addBookToCart: (data: any) => dispatch(addBookToCart(data))
+        addBookToCart: (data: any) => dispatch(addBookToCart(data)),
+        fetchBooks: (page: number) => dispatch(fetchBooks(page))
     }
 }
 

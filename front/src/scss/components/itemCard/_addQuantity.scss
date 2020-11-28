@@ -1,12 +1,15 @@
 .itemCard_addQuantity {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding-bottom: 30px;
+  flex-direction: column;
+  padding: 20px 10px;
   &--counter {
     display: flex;
     align-items: center;
+    flex-direction: column-reverse;
     justify-content: space-between;
+    @media all and (min-width: 340px) {
+      flex-direction: row;
+    }
   }
   &--borderIcon {
     padding-right: 10px;
