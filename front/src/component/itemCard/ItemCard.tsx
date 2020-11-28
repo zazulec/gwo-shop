@@ -3,7 +3,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBookQuantity, deleteBookQuantity } from '../../actions/shopActions/shopActions';
+import { addBookQuantity, deleteBookQuantity, deleteSingleBookFromCart } from '../../actions/shopActions/shopActions';
 import { ItemCardProps } from '../../helpers/interfaces/interfaces';
 import '../../scss/components/itemCard/itemCard.scss';
 import { CustomButton } from '../customButton/CustomButton';
@@ -16,6 +16,12 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
     const handleAddToCartClick = () => {
         return (
             dispatch(addBookToCart(book)), toast.success("Dodano do koszyka")
+        )
+    };
+
+    const handleDeleteBookFromOrder = () => {
+        return (
+            dispatch(deleteSingleBookFromCart(id)), toast.success("Usunięto pozycję z koszyka")
         )
     };
 
@@ -53,7 +59,7 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                             <div className="itemCard_addQuantity--counter">
                                 {quantity === 1
                                     ?
-                                    (<HighlightOffIcon className="itemCard_addQuantity--borderIcon" />)
+                                    (<HighlightOffIcon className="itemCard_addQuantity--borderIcon" onClick={() => handleDeleteBookFromOrder()} />)
                                     :
                                     (<RemoveCircleOutlineIcon onClick={() => dispatch(deleteBookQuantity(id))} className="itemCard_addQuantity--removeButton" />)}
                                 <span>{quantity} szt.</span>
@@ -67,7 +73,6 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                     : null}
         </div>
     )
-}
-
+};
 
 export default ItemCard

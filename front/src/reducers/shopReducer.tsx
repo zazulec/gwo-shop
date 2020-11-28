@@ -53,6 +53,15 @@ const shopReducer = (state = initState, action: any) => {
                 shoppingCart: decrementedStateData
             }
             break;
+        case "DELETE_SINGLE_BOOK_FROM_CART":
+            let findIndex = state.shoppingCart.findIndex((e: { id: number; }) => e.id === action.bookId)
+            const stateCopy = Object.assign([], state.shoppingCart);
+            stateCopy.splice(findIndex, 1)
+            newState = {
+                ...state,
+                shoppingCart: stateCopy
+            }
+            break;
         default:
             return state
     }
