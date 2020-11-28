@@ -1,36 +1,36 @@
 import { toast } from "react-toastify";
 import { ThunkDispatch } from "redux-thunk";
 import { myFetch } from "../../helpers/myFetch/myFetch";
-import { AddBookQuantity, AddBookToCart, ADD_BOOK_QUANTITY, ADD_BOOK_TO_CART, DeleteBookQuantity, DELETE_BOOK_QUANTITY, FetchAllBooksAction, FETCH_ALL_BOOKS, ResetWholeReduxShopData, RESET_REDUX_WHOLE_SHOP_DATA } from "../types/shopActionsTypes";
+import { Actions, ADD_BOOK_QUANTITY, ADD_BOOK_TO_CART, DELETE_BOOK_QUANTITY, DELETE_SINGLE_BOOK_FROM_CART, FETCH_ALL_BOOKS, RESET_REDUX_WHOLE_SHOP_DATA } from "../types/shopActionsTypes";
 
-export const fetchAllBooks = (data: any): FetchAllBooksAction => {
+export const fetchAllBooks = (data: any): Actions => {
     return {
         type: FETCH_ALL_BOOKS,
         allBooks: data,
     }
 }
 
-export const addBookToCart = (data: any): AddBookToCart => {
+export const addBookToCart = (data: any): Actions => {
     return {
         type: ADD_BOOK_TO_CART,
         cart: data,
     }
 }
 
-export const resetWholeReduxShopData = (): ResetWholeReduxShopData => {
+export const resetWholeReduxShopData = (): Actions => {
     return {
         type: RESET_REDUX_WHOLE_SHOP_DATA,
     }
 }
 
-export const addBookQuantity = (data: number): AddBookQuantity => {
+export const addBookQuantity = (data: number): Actions => {
     return {
         type: ADD_BOOK_QUANTITY,
         bookId: data,
     }
 }
 
-export const deleteBookQuantity = (data: number): DeleteBookQuantity => {
+export const deleteBookQuantity = (data: number): Actions => {
     return {
         type: DELETE_BOOK_QUANTITY,
         bookId: data,
@@ -38,12 +38,19 @@ export const deleteBookQuantity = (data: number): DeleteBookQuantity => {
 }
 
 export const fetchBooks: any = (page: number) => {
-    return (dispatch: ThunkDispatch<{}, undefined, any>, ) => {
+    return (dispatch: ThunkDispatch<{}, undefined, Actions>, ) => {
         myFetch(`/api/book?page=${page}`, {
             method: "get"
         }).then((data: any) => dispatch(fetchAllBooks(data)))
             .catch(() => {
                 toast.error("Błąd pobierania danych.");
             });
+    }
+}
+
+export const deleteSingleBookFromCart = (id: number): Actions => {
+    return {
+        type: DELETE_SINGLE_BOOK_FROM_CART,
+        bookId: id,
     }
 }
