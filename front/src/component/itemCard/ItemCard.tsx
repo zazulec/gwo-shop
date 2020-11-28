@@ -27,7 +27,6 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
     let { title, cover_url, author, pages, quantity, id, price, currency } = book;
     return (
         <div className="itemCard">
-            <div className="itemCard_arrow"></div>
             <div className="itemCard_leftContent">
                 <img
                     src={cover_url} alt="itemCard_bookCover" />
@@ -65,7 +64,9 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                                     (<RemoveCircleOutlineIcon onClick={() => dispatch(deleteBookQuantity(id))} className="itemCard_addQuantity--removeButton" />)}
                                 <span>{quantity} szt.</span>
                                 <AddCircleOutlineIcon className="itemCard_addQuantity--addButton" onClick={() => dispatch(addBookQuantity(id))} />
-                                <span style={{ paddingRight: "10px" }}> Cena: {(price *= quantity / 100).toFixed(2) + " " + currency} </span>
+                                <span style={{ paddingRight: "10px" }}>
+                                    Cena: {(price *= quantity / 100).toFixed(2) + " " + currency}
+                                </span>
                             </div>
                         </div>
                     </div>
