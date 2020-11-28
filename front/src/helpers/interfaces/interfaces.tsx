@@ -87,7 +87,7 @@ export interface LoginPageProps {
 }
 
 export interface MainPageProps {
-    fetchAllBooks: (data: any) => Action;
+    fetchBooks: (page: number) => Action;
     allBooks: any[],
     shoppingCart: Array<{}>,
 }

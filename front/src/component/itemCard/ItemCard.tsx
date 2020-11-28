@@ -7,10 +7,17 @@ import { addBookQuantity, deleteBookQuantity } from '../../actions/shopActions/s
 import { ItemCardProps } from '../../helpers/interfaces/interfaces';
 import '../../scss/components/itemCard/itemCard.scss';
 import { CustomButton } from '../customButton/CustomButton';
+import { toast } from 'react-toastify';
 
 const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, component }) => {
     const dispatch = useDispatch()
     let { title, cover_url, author, pages, quantity, id, price, currency } = book;
+
+    const handleAddToCartClick = () => {
+        return (
+            dispatch(addBookToCart(book)), toast.success("Dodano do koszyka")
+        )
+    };
 
     return (
         <div className="itemCard">
@@ -29,13 +36,13 @@ const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, compon
                     {shoppingCart.find((e: any) => e.title === title)
                         ?
                         <CustomButton
-                            buttonStyle={{ cursor: "auto", backgroundColor: "#c96d06" }}
+                            buttonStyle={{ cursor: "auto", backgroundColor: "#c96d06", }}
                             title="Dodano do koszyka"
                         />
                         :
                         <CustomButton
                             title="Dodaj do koszyka"
-                            onClick={() => dispatch(addBookToCart(book))}
+                            onClick={(): any => handleAddToCartClick()}
 
                         />}
                 </div>

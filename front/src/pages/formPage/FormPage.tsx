@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { resetWholeReduxAuthData } from '../../actions/authActions/authActions';
 import { resetWholeReduxShopData } from '../../actions/shopActions/shopActions';
 import { CustomButton } from '../../component/customButton/CustomButton';
@@ -39,12 +40,14 @@ export const FormPage: FC<FormPageState> = () => {
                     city: town,
                     zip_code: zip
                 }
+            }).catch(() => {
+                toast.error("Błąd pobierania danych.");
             }), setOrderDone("pending"),
             setTimeout(() => (setOrderDone("orderDone")), 3000)
         )
     }
 
-    useEffect((): any => {
+    useEffect((): void => {
         if ((nameError === "noError" && surnameError === "noError" && townError === "noError" && zipError === "noError") === true) {
             return (cart.forEach(e => sendOrder(e.id, e.quantity, name, surname, town, zip)))
         }
@@ -57,8 +60,8 @@ export const FormPage: FC<FormPageState> = () => {
         } else {
             setNameError("error")
         }
-
     }
+
     const checkSurname = () => {
         const surnameValidation = /^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/;
         if (surnameValidation.test(surname) === true && surname.length >= 5) {
@@ -67,6 +70,7 @@ export const FormPage: FC<FormPageState> = () => {
             setSurnameError("error")
         }
     }
+
     const checkTown = () => {
         const townValidation = /^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/;
         if (townValidation.test(town) === true) {
@@ -75,6 +79,7 @@ export const FormPage: FC<FormPageState> = () => {
             setTownError("error")
         }
     }
+
     const checkZip = () => {
         const zipValidation = /^[0-9]{2}-[0-9]{3}$/;
         if (zipValidation.test(zip) === true) {
@@ -83,6 +88,7 @@ export const FormPage: FC<FormPageState> = () => {
             setZipError("error")
         }
     }
+
     const checkValidation = () => {
         return (
             checkName(),
@@ -90,6 +96,7 @@ export const FormPage: FC<FormPageState> = () => {
             checkTown(),
             checkZip())
     }
+
     const backToThePast = () => {
         return (
             history.push("/"),
@@ -137,6 +144,7 @@ export const FormPage: FC<FormPageState> = () => {
                                 <CustomInput type="text" labelText="Kod Pocztowy" saveValue={setZip} toggleError={setZipError} value={zip} messageError='Wypełnij pole według wzoru: XX-XXX' error={zipError} />
                                 <div className="formPage_contentWrapper--button">
                                     <CustomButton title="zamawiam i płącę" style={{ marginTop: "20px" }} onClick={() => checkValidation()} />
+                                    <CustomButton title="powrót" style={{ marginTop: "20px" }} onClick={() => history.push("/shoppingCart")} />
                                 </div>
                             </div> : null}
                     </div>

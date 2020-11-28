@@ -25,24 +25,26 @@ const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
         <div className="loginWrapper">
             <img className="loginWrapper_runGuy" src={run} alt="runGuy" />
             <h1>Aby przejść do sklepu musisz się zalogować.</h1>
-            <CustomLoginInput
-                type="text"
-                labelText="login"
-                value={login}
-                readOnly={true}
-            />
-            <CustomLoginInput
-                type="password"
-                labelText="pasword"
-                value={password}
-                readOnly={true}
-            />
-            <Link to="/mainPage" className="loginWrapper_buttonLink" style={{ textDecoration: 'none' }}>
-                <CustomButton
-                    title="Zaloguj"
-                    onClick={() => handleLoginButtonClick()}
+            <div className="loginWrapper_form">
+                <CustomLoginInput
+                    type="text"
+                    labelText="login"
+                    value={login}
+                    readOnly={true}
                 />
-            </Link>
+                <CustomLoginInput
+                    type="password"
+                    labelText="pasword"
+                    value={password}
+                    readOnly={true}
+                />
+                <Link to="/mainPage" className="loginWrapper_buttonLink" style={{ textDecoration: 'none' }}>
+                    <CustomButton
+                        title="Zaloguj"
+                        onClick={() => handleLoginButtonClick()}
+                    />
+                </Link>
+            </div>
             <div className="loginWrapper_attribute"> Icons made by <a href="https://www.flaticon.com/authors/google" title="Google"> Google </a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
         </div >
     )

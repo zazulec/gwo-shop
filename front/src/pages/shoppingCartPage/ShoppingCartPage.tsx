@@ -19,10 +19,10 @@ export const ShoppingCartPage: FC = () => {
                     <br></br>
                     <br></br>
                     <Link to="/order" className="shoppingCart_emptyButton">
-                        <CustomButton title={"dalej"} style={{ paddingBottom: "20px" }} buttonStyle={{ minWidth: "200px" }} />
+                        <CustomButton title={"dalej"} style={{ paddingBottom: "20px" }} />
                     </Link>
                     <Link to="/mainPage" className="shoppingCart_emptyButton">
-                        <CustomButton title={"Powrót "} buttonStyle={{ minWidth: "200px" }} />
+                        <CustomButton title={"Powrót"} />
                     </Link>
                     {cart.map((book: any, index: number) => {
                         return (
@@ -34,16 +34,16 @@ export const ShoppingCartPage: FC = () => {
                         )
                     })}
                     <Link to="/order" className="shoppingCart_emptyButton">
-                        <CustomButton title={"dalej"} style={{ paddingBottom: "20px" }} buttonStyle={{ minWidth: "200px" }} />
+                        <CustomButton title={"dalej"} style={{ paddingBottom: "20px" }} />
                     </Link>
                     <Link to="/mainPage" className="shoppingCart_emptyButton">
-                        <CustomButton title={"Powrót "} buttonStyle={{ minWidth: "200px" }} />
+                        <CustomButton title={"Powrót "} />
                     </Link>
                 </>)
                 : (<>
                     <h3>Twój koszyk jest pusty! Wróć do poprzedniej strony by wybrać produkty.</h3>
                     <Link to="/mainPage" className="shoppingCart_emptyButton">
-                        <CustomButton title={"Powrót"} buttonStyle={{ minWidth: "200px" }} />
+                        <CustomButton title={"Powrót"} />
                     </Link>
                 </>)
             }
