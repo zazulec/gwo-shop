@@ -11,14 +11,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ShoppingCartPage } from './pages/shoppingCartPage/ShoppingCartPage';
 import ScrollToTop from './helpers/scrollToTop/ScrollToTop';
 import { FormPage } from './pages/formPage/FormPage';
+import { AppProps, AppState } from './helpers/interfaces/interfaces';
 
 
-interface AppProps {
-  user?: any,
-}
-interface AppState {
-  auth: any,
-}
+
 
 const App: FC<AppProps> = (props) => {
   return (

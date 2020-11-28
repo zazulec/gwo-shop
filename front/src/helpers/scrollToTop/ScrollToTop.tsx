@@ -1,11 +1,8 @@
 import { Component } from "react";
 import { withRouter } from "react-router";
+import { ScrollToTopProps } from "../interfaces/interfaces";
 
-interface ScrollToTopProps {
-    location: any,
-    history: any,
-    match: any,
-}
+
 
 class ScrollToTop extends Component<ScrollToTopProps> {
     componentDidUpdate(prevProps: any) {

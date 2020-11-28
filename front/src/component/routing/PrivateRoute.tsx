@@ -1,19 +1,9 @@
-import React, { ComponentState, FC } from "react";
+import React, { FC } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
+import { PrivateRouteProps, RouteState } from "../../helpers/interfaces/interfaces";
 
-interface RouteState {
-  auth: {
-    user?: any
-  },
-}
-interface PrivateRouteProps {
-  path: any,
-  user?: any,
-  auth?: any,
-  component: ComponentState,
-  exact: boolean,
-}
+
 
 export const PrivateRoute: FC<PrivateRouteProps> = ({ component: Component, user, ...rest }) => {
   return (

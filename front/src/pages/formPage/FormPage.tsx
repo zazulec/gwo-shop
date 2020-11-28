@@ -7,12 +7,8 @@ import { myFetch } from '../../helpers/myFetch/myFetch';
 import '../../scss/pages/formPage/formPage.scss';
 import { resetWholeReduxShopData } from '../../actions/shopActions/shopActions';
 import { resetWholeReduxAuthData } from '../../actions/authActions/authActions';
+import { FormPageState } from '../../helpers/interfaces/interfaces';
 
-interface FormPageState {
-    shop: {
-        shoppingCart: any[]
-    }
-}
 
 export const FormPage: FC<FormPageState> = () => {
 

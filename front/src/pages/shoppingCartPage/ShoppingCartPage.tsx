@@ -4,11 +4,7 @@ import { CustomButton } from '../../component/customButton/CustomButton';
 import ItemCard from '../../component/itemCard/ItemCard';
 import '../../scss/pages/shoppingCartPage/shoppingCartPage.scss';
 import { Link } from 'react-router-dom';
-
-interface ShoppingCartPageState {
-    shop: { shoppingCart: [] }
-
-}
+import { ShoppingCartPageState } from '../../helpers/interfaces/interfaces';
 
 export const ShoppingCartPage: FC = () => {
     const cart = useSelector((state: ShoppingCartPageState) => state.shop.shoppingCart)

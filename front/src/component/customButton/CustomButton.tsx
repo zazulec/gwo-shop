@@ -1,12 +1,8 @@
 import React, { FC } from 'react';
 import '../../scss/components/customButton/customButton.scss';
+import { CustomButtonProps } from '../../helpers/interfaces/interfaces';
 
-interface CustomButtonProps {
-    title: string,
-    onClick?: (data: any) => any,
-    style?: {},
-    buttonStyle?: {}
-}
+
 
 export const CustomButton: FC<CustomButtonProps> = ({ title, onClick, buttonStyle, style }) => {
     return (

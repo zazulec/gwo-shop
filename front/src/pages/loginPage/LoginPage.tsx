@@ -8,10 +8,9 @@ import { CustomLoginInput } from '../../component/customLoginInput/CustomLoginIn
 import '../../scss/pages/loginPage/loginPage.scss';
 import { toast } from "react-toastify";
 import run from '../../assets/run.svg';
+import { LoginPageProps } from '../../helpers/interfaces/interfaces';
 
-interface LoginPageProps {
-    signUp: (login: string, password: string) => Action,
-}
+
 
 const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
     const [login] = useState("login")

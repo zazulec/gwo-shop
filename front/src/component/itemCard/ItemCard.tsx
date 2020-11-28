@@ -1,30 +1,18 @@
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import '../../scss/components/itemCard/itemCard.scss';
-import { CustomButton } from '../customButton/CustomButton';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
+import React, { FC } from 'react';
+import { useDispatch } from 'react-redux';
 import { addBookQuantity, deleteBookQuantity } from '../../actions/shopActions/shopActions';
+import { ItemCardProps } from '../../helpers/interfaces/interfaces';
+import '../../scss/components/itemCard/itemCard.scss';
+import { CustomButton } from '../customButton/CustomButton';
 
-interface ItemCardProps {
-    book: {
-        title: string,
-        cover_url: string,
-        author: string,
-        id: number,
-        pages: number,
-        price: number,
-        currency: string,
-        quantity: number,
-    },
-    addBookToCart?: any,
-    shoppingCart?: any,
-    component?: string,
-}
+
 const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, component }) => {
     const dispatch = useDispatch()
     let { title, cover_url, author, pages, quantity, id, price, currency } = book;
+
     return (
         <div className="itemCard">
             <div className="itemCard_leftContent">

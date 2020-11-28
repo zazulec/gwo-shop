@@ -1,27 +1,15 @@
 import React, { FC, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { Action, Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 import { addBookToCart, fetchAllBooks } from '../../actions/shopActions/shopActions';
 import ItemCard from '../../component/itemCard/ItemCard';
 import { StyledPagination } from '../../component/pagination/Pagination';
 import { ShoppingCartButton } from '../../component/shoppingCartButton/ShoppingCartButton';
 import { myFetch } from '../../helpers/myFetch/myFetch';
 import '../../scss/pages/mainPage/mainPage.scss';
+import { MainPageProps, MainPageState } from '../../helpers/interfaces/interfaces';
 
-interface MainPageProps {
-    fetchAllBooks: (data: any) => Action;
-    allBooks: any[],
-    shoppingCart: Array<{}>,
-}
 
-interface MainPageState {
-    shop: {
-        allBooks: {
-            data: any[]
-        }
-        shoppingCart: Array<{}>,
-    }
-}
 const MainPage: FC<MainPageProps> = ({ fetchAllBooks, allBooks, shoppingCart }) => {
 
     const [page, setPage] = useState(1);

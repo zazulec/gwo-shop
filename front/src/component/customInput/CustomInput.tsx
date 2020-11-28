@@ -1,16 +1,6 @@
 import React, { FC } from 'react';
 import '../../scss/components/customInput/customInput.scss';
-
-interface CustomLoginProps {
-    type: string,
-    labelText: string,
-    error?: string,
-    saveValue: Function,
-    toggleError: Function,
-    value: string,
-    messageError: string,
-
-}
+import { CustomLoginProps } from '../../helpers/interfaces/interfaces';
 
 export const CustomInput: FC<CustomLoginProps> = ({ type, labelText, error, saveValue, value, messageError, toggleError }) => {
 
