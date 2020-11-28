@@ -1,10 +1,8 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import thunkMiddleware from "redux-thunk";
 import reducer from "../../reducers/index";
 
-
 const middlewares = [thunkMiddleware];
-
 
 declare global {
     interface Window {

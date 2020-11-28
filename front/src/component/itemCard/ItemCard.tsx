@@ -8,7 +8,6 @@ import { ItemCardProps } from '../../helpers/interfaces/interfaces';
 import '../../scss/components/itemCard/itemCard.scss';
 import { CustomButton } from '../customButton/CustomButton';
 
-
 const ItemCard: FC<ItemCardProps> = ({ book, addBookToCart, shoppingCart, component }) => {
     const dispatch = useDispatch()
     let { title, cover_url, author, pages, quantity, id, price, currency } = book;

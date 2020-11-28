@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
-import '../../scss/components/customLoginInput/customLoginInput.scss';
 import passwordIcon from '../../assets/passwordIcon.svg';
 import { CustomLoginInputProps } from '../../helpers/interfaces/interfaces';
+import '../../scss/components/customLoginInput/customLoginInput.scss';
 
 export const CustomLoginInput: FC<CustomLoginInputProps> = ({ type, labelText, value, readOnly }) => {
     const [showPassword, setShowPassword] = useState(false);

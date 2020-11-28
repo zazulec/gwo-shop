@@ -11,6 +11,7 @@ export interface FetchAllBooksAction {
         metadata: {},
     }
 }
+
 export interface AddBookToCart {
     type: typeof ADD_BOOK_TO_CART,
     cart: [
