@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useState, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CustomButton } from '../../component/customButton/CustomButton';
 import { CustomInput } from '../../component/customInput/CustomInput';
@@ -56,6 +56,7 @@ export const FormPage: FC<FormPageState> = () => {
             return (cart.forEach(e => sendOrder(e.id, e.quantity, name, surname, town, zip)))
         }
     }, [nameError, surnameError, townError, zipError, name, surname, town, zip, cart])
+
     const checkName = () => {
         const nameValidation = /^[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+$/;
         if (nameValidation.test(name) === true && name.length >= 4) {
@@ -103,25 +104,48 @@ export const FormPage: FC<FormPageState> = () => {
             dispatch(resetWholeReduxAuthData())
         )
     };
-
     return (
-
         <div className="formPage">
             {orderDone === "noOrder" ?
-                (<><h1>Księgarnia online</h1>
+                (<>
+                    <h1>Księgarnia online</h1>
                     <h3>Poniżej możesz zobaczyć podsumowanie swojego zamówienia. <br></br>
                         Podaj swoje dane by sfinalizować transakcje</h3>
                     <hr style={{ width: "80%" }}></hr>
                     <br></br>
                     <br></br>
-                    <div className="formPage_inputs">
-                        <CustomInput type="text" labelText="Imię" saveValue={setName} toggleError={setNameError} value={name} messageError='Wpisz minimum 4 litery bez cyfr.' error={nameError} />
-                        <CustomInput type="text" labelText="Nazwisko" saveValue={setSurname} toggleError={setSurnameError} value={surname} messageError='Wpisz minimum 5 liter bez cyfr.' error={surnameError} />
-                        <CustomInput type="text" labelText="Miejscowość" saveValue={setTown} toggleError={setTownError} value={town} messageError='Wypełnij pole używając wyłącznie liter' error={townError} />
-                        <CustomInput type="text" labelText="Kod Pocztowy" saveValue={setZip} toggleError={setZipError} value={zip} messageError='Wypełnij pole według wzoru: XX-XXX' error={zipError} />
-                    </div>
-                    <div className="formPage_button">
-                        <CustomButton title="zamawiam i płącę" style={{ marginTop: "20px" }} onClick={() => checkValidation()} />
+                    <div className="formPage_contentWrapper">
+                        <div className="formPage_contentWrapper--bill">
+                            {cart.length > 0 ? <h3>Twoje zamówienie:</h3> : null}
+                            <div className="formPage_contentWrapper--bill-wrapper">
+                                {cart.length > 0 ? cart.map((e: any, index: number) => (
+                                    <div className="formPage_contentWrapper--bill-data" key={index}>
+                                        <span> {e.title.slice(0, 30) + "..."} </span>
+                                        <span> x {e.quantity}szt.</span>
+                                    </div>
+
+
+                                )) : (
+                                        <div style={{ display: "flex", flexDirection: "column" }}>
+                                            <h3>Twój koszyk jest pusty!</h3>
+                                            <h3>Wróć do wyboru książek</h3>
+                                            <CustomButton title="powrót" onClick={() => history.push("/mainPage")} />
+                                        </div>)
+                                }
+
+                            </div>
+                        </div>
+                        {cart.length > 0 ?
+                            <div className="formPage_contentWrapper--inputs">
+                                <h3>Wypełnij pola by sfinalizować transakcje:</h3>
+                                <CustomInput type="text" labelText="Imię" saveValue={setName} toggleError={setNameError} value={name} messageError='Wpisz minimum 4 litery bez cyfr.' error={nameError} />
+                                <CustomInput type="text" labelText="Nazwisko" saveValue={setSurname} toggleError={setSurnameError} value={surname} messageError='Wpisz minimum 5 liter bez cyfr.' error={surnameError} />
+                                <CustomInput type="text" labelText="Miejscowość" saveValue={setTown} toggleError={setTownError} value={town} messageError='Wypełnij pole używając wyłącznie liter' error={townError} />
+                                <CustomInput type="text" labelText="Kod Pocztowy" saveValue={setZip} toggleError={setZipError} value={zip} messageError='Wypełnij pole według wzoru: XX-XXX' error={zipError} />
+                                <div className="formPage_contentWrapper--button">
+                                    <CustomButton title="zamawiam i płącę" style={{ marginTop: "20px" }} onClick={() => checkValidation()} />
+                                </div>
+                            </div> : null}
                     </div>
                 </>)
                 : orderDone === "pending"
