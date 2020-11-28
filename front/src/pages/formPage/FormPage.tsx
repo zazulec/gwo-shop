@@ -1,21 +1,15 @@
-import React, { FC, useEffect, useState, Fragment } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { resetWholeReduxAuthData } from '../../actions/authActions/authActions';
+import { resetWholeReduxShopData } from '../../actions/shopActions/shopActions';
 import { CustomButton } from '../../component/customButton/CustomButton';
 import { CustomInput } from '../../component/customInput/CustomInput';
 import { history } from '../../helpers/history/history';
+import { FormPageState } from '../../helpers/interfaces/interfaces';
 import { myFetch } from '../../helpers/myFetch/myFetch';
 import '../../scss/pages/formPage/formPage.scss';
-import { resetWholeReduxShopData } from '../../actions/shopActions/shopActions';
-import { resetWholeReduxAuthData } from '../../actions/authActions/authActions';
-
-interface FormPageState {
-    shop: {
-        shoppingCart: any[]
-    }
-}
 
 export const FormPage: FC<FormPageState> = () => {
-
     const [name, setName] = useState('');
     const [surname, setSurname] = useState("");
     const [town, setTown] = useState("");
@@ -26,7 +20,6 @@ export const FormPage: FC<FormPageState> = () => {
     const [townError, setTownError] = useState("");
     const [zipError, setZipError] = useState("");
     const [orderDone, setOrderDone] = useState("noOrder");
-
 
     const cart = useSelector((state: FormPageState) => state.shop.shoppingCart);
     const dispatch = useDispatch();

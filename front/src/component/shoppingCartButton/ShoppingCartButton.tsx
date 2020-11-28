@@ -1,11 +1,8 @@
-import React, { FC } from 'react';
-import '../../scss/components/shoppingCart/shoppingCart.scss';
-import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-
-interface ShoppingCartButtonProps {
-    counter: Number,
-}
+import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { ShoppingCartButtonProps } from '../../helpers/interfaces/interfaces';
+import '../../scss/components/shoppingCart/shoppingCart.scss';
 
 export const ShoppingCartButton: FC<ShoppingCartButtonProps> = ({ counter }) => {
     return (

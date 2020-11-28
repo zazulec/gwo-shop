@@ -1,17 +1,14 @@
 import React, { FC, useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Action, Dispatch } from 'redux';
+import { toast } from "react-toastify";
+import { Dispatch } from 'redux';
 import signUp from '../../actions/authActions/authActions';
+import run from '../../assets/run.svg';
 import { CustomButton } from '../../component/customButton/CustomButton';
 import { CustomLoginInput } from '../../component/customLoginInput/CustomLoginInput';
+import { LoginPageProps } from '../../helpers/interfaces/interfaces';
 import '../../scss/pages/loginPage/loginPage.scss';
-import { toast } from "react-toastify";
-import run from '../../assets/run.svg';
-
-interface LoginPageProps {
-    signUp: (login: string, password: string) => Action,
-}
 
 const LoginPage: FC<LoginPageProps> = ({ signUp }) => {
     const [login] = useState("login")

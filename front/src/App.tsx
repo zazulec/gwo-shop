@@ -1,24 +1,17 @@
 import React, { FC } from 'react';
 import { connect } from 'react-redux';
 import { Route, Router } from 'react-router-dom';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import './App.scss';
 import { PrivateRoute } from './component/routing/PrivateRoute';
 import { history } from './helpers/history/history';
-import LoginPage from './pages/loginPage/LoginPage';
-import MainPage from './pages/mainPage/MainPage';
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { ShoppingCartPage } from './pages/shoppingCartPage/ShoppingCartPage';
+import { AppProps, AppState } from './helpers/interfaces/interfaces';
 import ScrollToTop from './helpers/scrollToTop/ScrollToTop';
 import { FormPage } from './pages/formPage/FormPage';
-
-
-interface AppProps {
-  user?: any,
-}
-interface AppState {
-  auth: any,
-}
+import LoginPage from './pages/loginPage/LoginPage';
+import MainPage from './pages/mainPage/MainPage';
+import { ShoppingCartPage } from './pages/shoppingCartPage/ShoppingCartPage';
 
 const App: FC<AppProps> = (props) => {
   return (

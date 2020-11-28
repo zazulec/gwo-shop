@@ -1,5 +1,15 @@
-import { AddBookToCart, ADD_BOOK_TO_CART, FetchAllBooksAction, FETCH_ALL_BOOKS, RESET_REDUX_WHOLE_SHOP_DATA, ResetWholeReduxShopData, AddBookQuantity, DeleteBookQuantity, ADD_BOOK_QUANTITY, DELETE_BOOK_QUANTITY } from "../types/shopActionsTypes";
-
+import {
+    AddBookQuantity,
+    AddBookToCart,
+    ADD_BOOK_QUANTITY,
+    ADD_BOOK_TO_CART,
+    DeleteBookQuantity,
+    DELETE_BOOK_QUANTITY,
+    FetchAllBooksAction,
+    FETCH_ALL_BOOKS,
+    ResetWholeReduxShopData,
+    RESET_REDUX_WHOLE_SHOP_DATA
+} from "../types/shopActionsTypes";
 
 export const fetchAllBooks = (data: any): FetchAllBooksAction => {
     return {
@@ -7,6 +17,7 @@ export const fetchAllBooks = (data: any): FetchAllBooksAction => {
         allBooks: data,
     }
 }
+
 export const addBookToCart = (data: any): AddBookToCart => {
     return {
         type: ADD_BOOK_TO_CART,
@@ -19,7 +30,6 @@ export const resetWholeReduxShopData = (): ResetWholeReduxShopData => {
         type: RESET_REDUX_WHOLE_SHOP_DATA,
     }
 }
-
 
 export const addBookQuantity = (data: number): AddBookQuantity => {
     return {
