@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { resetWholeReduxAuthData } from '../../actions/authActions/authActions';
 import { resetWholeReduxShopData } from '../../actions/shopActions/shopActions';
 import { CustomButton } from '../../component/customButton/CustomButton';
 import { CustomInput } from '../../component/customInput/CustomInput';
-import { history } from '../../helpers/history/history';
 import { FormPageState } from '../../helpers/interfaces/interfaces';
 import { myFetch } from '../../helpers/myFetch/myFetch';
 import '../../scss/pages/formPage/formPage.scss';
@@ -99,7 +99,6 @@ export const FormPage: FC<FormPageState> = () => {
 
     const backToThePast = () => {
         return (
-            history.push("/"),
             dispatch(resetWholeReduxShopData()),
             dispatch(resetWholeReduxAuthData())
         )
@@ -129,7 +128,9 @@ export const FormPage: FC<FormPageState> = () => {
                                         <div style={{ display: "flex", flexDirection: "column" }}>
                                             <h3>Twój koszyk jest pusty!</h3>
                                             <h3>Wróć do wyboru książek</h3>
-                                            <CustomButton title="powrót" onClick={() => history.push("/mainPage")} />
+                                            <Link to="/mainPage" className="shoppingCart_emptyButton">
+                                                <CustomButton title="powrót" />
+                                            </Link>
                                         </div>)
                                 }
 
@@ -144,7 +145,9 @@ export const FormPage: FC<FormPageState> = () => {
                                 <CustomInput type="text" labelText="Kod Pocztowy" saveValue={setZip} toggleError={setZipError} value={zip} messageError='Wypełnij pole według wzoru: XX-XXX' error={zipError} />
                                 <div className="formPage_contentWrapper--button">
                                     <CustomButton title="zamawiam i płącę" style={{ marginTop: "20px" }} onClick={() => checkValidation()} />
-                                    <CustomButton title="powrót" style={{ marginTop: "20px" }} onClick={() => history.push("/shoppingCart")} />
+                                    <Link to="/shoppingCart" className="shoppingCart_emptyButton">
+                                        <CustomButton title="powrót" style={{ marginTop: "20px" }} />
+                                    </Link>
                                 </div>
                             </div> : null}
                     </div>
@@ -159,7 +162,10 @@ export const FormPage: FC<FormPageState> = () => {
                         ? <>
                             <h1>Księgarnia online</h1>
                             <h3>Dziękujemy za zakupy płaność przebiegła pomyślnie!</h3>
-                            <CustomButton title="Powrót do logowania" onClick={() => backToThePast()} /></>
+                            <Link to="/" className="shoppingCart_emptyButton">
+                                <CustomButton title="Powrót do logowania" onClick={() => backToThePast()} />
+                            </Link>
+                        </>
                         : null}
         </div>
     )
