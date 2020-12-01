@@ -22,8 +22,6 @@ The application allows the user to:
 
 I wrote the application in typescript which was not required in the project, my motivation was to learn this coding language even better.
 
-I am aware that the application is not outstanding in terms of UX / UI. However, that was not her goal, I focused on perfect functionality.
-
 ## Screenshots
 
 Login Page
@@ -50,14 +48,14 @@ Order Page
 ## Setup
 To run the application locally first of all ypu need to use any IDE(Visual Studio Code) Next step , you must turn on the backend server and the frontend application. Below are the installation instructions.
 
-Backend server install.
+Backend server start.
 Type in terminal:
 ```bash
 cd api
 npm install
 npm start
 ```
-Frontend application install.
+Frontend application start.
 Type in terminal:
 ```bash
 cd front
